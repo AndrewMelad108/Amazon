@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/header.jsx";
+import Login from "./components/login.jsx";
 import { Route, Routes } from "react-router-dom";
 function App() {
   return (
@@ -10,6 +11,14 @@ function App() {
           element={
             <>
               <Header />
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              <Login />
             </>
           }
         />
