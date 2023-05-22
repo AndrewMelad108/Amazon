@@ -5,7 +5,6 @@ import Products from "../components/Products";
 import imageHome from "../images/home.jpg";
 
 function Home() {
-  console.log(productData);
   const showProducts = productData.map((product) => {
     return <Products key={product.id} {...product} />;
   });

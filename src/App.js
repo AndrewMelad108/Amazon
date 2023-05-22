@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/header.jsx";
 import Home from "./components/Home.jsx";
 import Login from "./components/login.jsx";
+import CheckOut from "./components/CheckOut.jsx";
 import { Route, Routes } from "react-router-dom";
 import { React, useEffect } from "react";
 import { auth } from "./firebase";
@@ -41,6 +42,15 @@ function App() {
           element={
             <>
               <Login />
+            </>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <>
+              <Header />
+              <CheckOut />
             </>
           }
         />

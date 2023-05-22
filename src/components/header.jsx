@@ -8,6 +8,8 @@ import { useAuth } from "../Context/GlobalState.js";
 import { auth } from "../firebase";
 function Header() {
   const user = useAuth();
+  const { basket } = useAuth();
+  console.log(basket.length);
   const handleAuth = () => {
     auth.signOut();
   };
@@ -42,8 +44,10 @@ function Header() {
           <div className="optiontwo">Prime </div>
         </div>
         <div className="link cart-shopping">
-          <img src={cartIcon} alt="cart" className="cart-image" />
-          <span>5</span>
+          <Link to="/checkout">
+            <img src={cartIcon} alt="cart" className="cart-image" />
+          </Link>
+          <span>{basket.length}</span>
         </div>
       </div>
     </div>

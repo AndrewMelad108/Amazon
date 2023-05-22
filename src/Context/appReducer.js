@@ -9,6 +9,30 @@ function appReducer(state = initalState, action) {
         ...state,
         user: action.user,
       };
+    case "EMPTY_BASKET":
+      return {
+        ...state,
+        basket: [],
+      };
+    case "REMOVE_FROM_BASKET":
+      let newBasket = [...state.basket];
+      const index = newBasket.findIndex((item) => {
+        return item.id === action.id;
+      });
+      if (index >= 0) {
+        newBasket.splice(index, 1);
+      } else {
+        console.log("cant delete product in basket");
+      }
+      return {
+        ...state,
+        basket: newBasket,
+      };
+    case "ADD_TO_BASKET":
+      return {
+        ...state,
+        basket: [...state.basket, action.item],
+      };
     default:
       return state;
   }

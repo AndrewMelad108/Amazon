@@ -1,9 +1,22 @@
 import React from "react";
 import "./Products.css";
+import { useAuth } from "../Context/GlobalState";
 function Products(props) {
-  console.log(props);
+  const { dispatch, basket } = useAuth();
+
+  console.log(basket);
   const addToBasket = () => {
-    alert("add");
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id: props.id,
+        title: props.title,
+        description: props.description,
+        price: props.price,
+        image: props.images[0],
+        rating: props.rating,
+      },
+    });
   };
   return (
     <div className="Prdoucts">
