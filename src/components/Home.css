@@ -1,0 +1,15 @@
+.Home {
+  /* background-color: #eee; */
+  height: auto;
+}
+.imageHome {
+  width: 100%;
+  max-height: 100%;
+}
+.home-content {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 20px;
+  padding: 40px;
+  grid-template-rows: repeat(10, minmax(200px, 300px));
+}

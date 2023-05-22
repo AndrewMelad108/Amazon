@@ -4,8 +4,13 @@ import "./Header.css";
 import logo from "../images/Amazon_logo.svg.png";
 import searchIcon from "../icons/1080251-200.png";
 import cartIcon from "../icons/shopping-cart.png";
-
-function header() {
+import { useAuth } from "../Context/GlobalState.js";
+import { auth } from "../firebase";
+function Header() {
+  const user = useAuth();
+  const handleAuth = () => {
+    auth.signOut();
+  };
   return (
     <div className="header">
       <div className="logo-section">
@@ -18,9 +23,15 @@ function header() {
         <img src={searchIcon} alt="logo" className="search-icon" />
       </div>
       <div className="header-links">
-        <Link to="/login" className="link">
-          <div className="optionOne">Hello Guest</div>
-          <div className="optiontwo">Sign in </div>
+        <Link
+          to={!user.user ? "/login" : ""}
+          className="link"
+          onClick={handleAuth}
+        >
+          <div className="optionOne">
+            Hello {user.user ? `${user.user.email}` : "Guest"}
+          </div>
+          <div className="optiontwo"> {user.user ? "Log Out" : "Sign In"} </div>
         </Link>
         <Link to="/orders" className="link">
           <div className="optionOne">Returns</div>
@@ -39,4 +50,4 @@ function header() {
   );
 }
 
-export default header;
+export default Header;

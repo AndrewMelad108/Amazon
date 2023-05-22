@@ -4,13 +4,24 @@ import logo from "../images/Amazon-Logo-login.png";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const Navigate = useNavigate();
   const register = () => {
     createUserWithEmailAndPassword(auth, email, password).then((auth) => {
+      if (auth) {
+        Navigate("/");
+      }
+    });
+  };
+  const SignIn = () => {
+    signInWithEmailAndPassword(auth, email, password).then((auth) => {
       if (auth) {
         Navigate("/");
       }
@@ -46,7 +57,7 @@ const Login = () => {
             setPassword(e.target.value);
           }}
         />
-        <button type="submit" className="loginBtn">
+        <button type="submit" className="loginBtn" onClick={SignIn}>
           Continue
         </button>
         <p className="condition">
