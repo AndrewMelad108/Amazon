@@ -1,6 +1,7 @@
 import React from "react";
 import "./Subtotal.css";
 import { useAuth } from "../Context/GlobalState";
+import { Link } from "react-router-dom";
 // import { Checkbox } from "@mui/material";
 
 function Subtotal() {
@@ -17,7 +18,9 @@ function Subtotal() {
         {/* <Checkbox checked={checked} onChange={handleChange} /> */}
         this order contains a gift
       </p>
-      <button className="AddPaymentBtn">Proceed to Checkout</button>
+      <Link to="/payment" className="AddPaymentBtn">
+        Proceed to Checkout
+      </Link>
     </div>
   );
 }
