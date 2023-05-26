@@ -8,6 +8,7 @@ import { React, useEffect } from "react";
 import { auth } from "./firebase";
 import { useAuth } from "./Context/GlobalState";
 import Payment from "../src/components/Payment";
+import Order from "./components/Order";
 
 function App() {
   const { dispatch } = useAuth();
@@ -61,6 +62,15 @@ function App() {
             <>
               <Header />
               <Payment />
+            </>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <>
+              <Header />
+              <Order />
             </>
           }
         />
