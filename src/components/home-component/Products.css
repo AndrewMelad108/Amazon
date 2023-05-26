@@ -2,7 +2,8 @@
   cursor: pointer;
   transition: all ease-in-out 2s;
   display: grid;
-  grid-template-columns: 300px 200px;
+  grid-template-columns: 200px 300px;
+  grid-template-rows: 250px;
   position: relative;
   border-radius: 10px;
 }

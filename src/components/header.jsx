@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../images/Amazon_logo.svg.png";
@@ -7,11 +7,13 @@ import cartIcon from "../icons/shopping-cart.png";
 import { useAuth } from "../Context/GlobalState.js";
 import { auth } from "../firebase";
 function Header() {
-  const user = useAuth();
-  const { basket } = useAuth();
-  console.log(basket.length);
+  const { basket, user } = useAuth();
+  const [searchValue, setSearchValue] = useState();
   const handleAuth = () => {
     auth.signOut();
+  };
+  const handelSearch = (e) => {
+    setSearchValue(e.traget.value);
   };
   return (
     <div className="header">
@@ -21,19 +23,20 @@ function Header() {
         </Link>
       </div>
       <div className="search-section ">
-        <input type="text" className="searchInput" />
+        <input
+          type="text"
+          className="searchInput"
+          value={searchValue}
+          onChange={handelSearch}
+        />
         <img src={searchIcon} alt="logo" className="search-icon" />
       </div>
       <div className="header-links">
-        <Link
-          to={!user.user ? "/login" : ""}
-          className="link"
-          onClick={handleAuth}
-        >
+        <Link to={!user ? "/login" : ""} className="link" onClick={handleAuth}>
           <div className="optionOne">
-            Hello {user.user ? `${user.user.email}` : "Guest"}
+            Hello {user ? `${user.email}` : "Guest"}
           </div>
-          <div className="optiontwo"> {user.user ? "Log Out" : "Sign In"} </div>
+          <div className="optiontwo"> {user ? "Log Out" : "Sign In"} </div>
         </Link>
         <Link to="/orders" className="link">
           <div className="optionOne">Returns</div>

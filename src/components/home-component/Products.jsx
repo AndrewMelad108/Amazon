@@ -1,6 +1,6 @@
 import React from "react";
 import "./Products.css";
-import { useAuth } from "../Context/GlobalState";
+import { useAuth } from "../../Context/GlobalState";
 function Products(props) {
   const { dispatch, basket } = useAuth();
 
