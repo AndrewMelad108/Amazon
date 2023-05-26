@@ -1,7 +1,15 @@
 import React from "react";
 import "./ProductBasket.css";
 import { useAuth } from "../Context/GlobalState";
-function ProductBasket({ id, title, image, description, rate, price }) {
+function ProductBasket({
+  id,
+  title,
+  image,
+  description,
+  rate,
+  price,
+  hiddenBtn,
+}) {
   const { dispatch } = useAuth();
 
   const removeToBasket = () => {
@@ -22,9 +30,13 @@ function ProductBasket({ id, title, image, description, rate, price }) {
         <small>$</small>
         <strong className="price-product">{price}</strong>
         <p>{rate}</p>
-        <button className="RomveBasketBtn" onClick={removeToBasket}>
-          Romve from Basket
-        </button>
+        {hiddenBtn ? (
+          ""
+        ) : (
+          <button className="RomveBasketBtn" onClick={removeToBasket}>
+            Romve from Basket
+          </button>
+        )}
       </div>
     </div>
   );

@@ -3,10 +3,10 @@ import "./Payment.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/GlobalState";
 import ProductBasket from "./ProductBasket";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
+import shortid from "shortid";
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
 function Payment() {
   const Navigate = useNavigate();
   const { basket, user, dispatch } = useAuth();
@@ -16,7 +16,6 @@ function Payment() {
   let productsInBasket = basket.map((product) => {
     return <ProductBasket key={product.id} {...product} />;
   });
-  console.log(basket);
   return (
     <div className="Payment">
       <h2 className="Payment-title">
@@ -46,7 +45,9 @@ function Payment() {
               const docRef = addDoc(collection(db, "orders"), {
                 basket: basket,
                 userID: user.uid,
+                userEmail: user.email,
                 totalPrice: getBasketTotal,
+                orderID: shortid.generate(),
               });
               dispatch({
                 type: "EMPTY_BASKET",
