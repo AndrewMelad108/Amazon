@@ -70,9 +70,11 @@ const Login = () => {
         <span className="title-create">New to Amazon?</span>
         <hr className="lines" />
         {/* <Link to="/signIn"> */}
-        <button className="createAccountBtn" onClick={register}>
-          Create your Amazon account
-        </button>
+        <Link to="/SignIn">
+          <button className="createAccountBtn">
+            Create your Amazon account
+          </button>
+        </Link>
         {/* </Link> */}
       </div>
     </div>

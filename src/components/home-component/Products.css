@@ -2,26 +2,15 @@
   cursor: pointer;
   transition: all ease-in-out 2s;
   display: grid;
-  grid-template-columns: 200px 300px;
-  grid-template-rows: 250px;
-  position: relative;
-  border-radius: 10px;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 200px;
 }
-.Prdoucts:hover .bg-cover {
-  display: block;
-}
-.bg-cover {
-  position: absolute;
-  border-radius: 10px;
-  display: none;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(00, 00, 00, 0.6);
-}
+
 .product-info {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
 }
 
 .product-title {
@@ -52,4 +41,14 @@
   margin: auto;
   width: 200px;
   border-radius: 10px;
+}
+.group-icon {
+  align-self: flex-end;
+  margin-top: 20px;
+}
+.icon-info {
+  margin: 0 20px;
+}
+.icon {
+  cursor: pointer;
 }

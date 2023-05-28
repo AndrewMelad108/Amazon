@@ -1,6 +1,11 @@
 import React from "react";
 import "./Products.css";
 import { useAuth } from "../../Context/GlobalState";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import BadgeIcon from "@mui/icons-material/Badge";
+import Rating from "@mui/material/Rating";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import Tooltip from "@mui/material/Tooltip";
 function Products(props) {
   const { dispatch, basket } = useAuth();
 
@@ -20,11 +25,11 @@ function Products(props) {
   };
   return (
     <div className="Prdoucts">
-      <div className="bg-cover">
+      {/* <div className="bg-cover">
         <button className="addBtn" onClick={addToBasket}>
           addToBasket
         </button>
-      </div>
+      </div> */}
       <div className="product-image">
         <img
           src={props.images[0]}
@@ -38,6 +43,22 @@ function Products(props) {
         <div className="price">
           <small>$</small>
           <strong>{props.price}</strong>
+        </div>
+        <Rating defaultValue={props.rating} disabled />
+        <div className="group-icon">
+          <Tooltip title="addToBasket" placement="top">
+            <AddShoppingCartIcon
+              className="icon"
+              color="primary"
+              onClick={addToBasket}
+            />
+          </Tooltip>
+          <Tooltip title="Detials" placement="top">
+            <BadgeIcon className="icon icon-info" color="primary" />
+          </Tooltip>
+          <Tooltip title="favorite" placement="top">
+            <LocalFireDepartmentIcon className="icon" color="primary" />
+          </Tooltip>
         </div>
       </div>
     </div>

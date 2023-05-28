@@ -1,4 +1,4 @@
-.login {
+.SignIn {
   width: 400px;
   margin: 5px auto;
 }
@@ -11,31 +11,31 @@
   margin-bottom: 10px;
 }
 
-.login-content {
+.SignIn-content {
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
-.loginBtn,
-.login-input,
-.login-input-title {
+.SignInBtn,
+.SignIn-input,
+.SignIn-input-title {
   display: block;
   width: 100%;
 }
 
-.login-title {
+.SignIn-title {
   margin-bottom: 10px;
   font-size: 30px;
 }
-.login-input-title {
+.SignIn-input-title {
   margin-bottom: 3px;
   font-size: 14px;
   font-weight: bold;
 }
 
-.login-input {
+.SignIn-input {
   margin-bottom: 20px;
   outline: 0;
   border: 0;
@@ -44,7 +44,7 @@
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   height: 25px;
 }
-.loginBtn {
+.SignInBtn {
   padding: 10px 0;
   color: black;
   background-color: #ffd814;
