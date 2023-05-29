@@ -1,6 +1,7 @@
 .Home {
   height: auto;
   min-height: 100vh;
+  background-color: #eee;
 }
 .imageHome {
   width: 100%;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Payment.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/GlobalState";
@@ -9,6 +9,7 @@ import shortid from "shortid";
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 function Payment() {
   const Navigate = useNavigate();
+  const [Checkout, setCheckout] = useState(false);
   const { basket, user, dispatch } = useAuth();
   const getBasketTotal = basket.reduce((amount, item) => {
     return amount + item.price;
@@ -49,13 +50,16 @@ function Payment() {
                 totalPrice: getBasketTotal,
                 orderID: shortid.generate(),
               });
-              dispatch({
-                type: "EMPTY_BASKET",
-              });
-              Navigate("/orders");
+              setCheckout(true);
+              setTimeout(() => {
+                dispatch({
+                  type: "EMPTY_BASKET",
+                });
+                Navigate("/orders");
+              }, 2000);
             }}
           >
-            Checkout
+            {Checkout ? "Processing" : "Checkout"}
           </button>
         </div>
       </div>
